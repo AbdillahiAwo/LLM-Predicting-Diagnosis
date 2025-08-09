@@ -2,6 +2,9 @@
 
 This project evaluates the diagnostic accuracy of a LLM in predicting the correct final medical diagnoses from selected House M.D. episodes. The evaluation was performed using two scoring methods: Strict Accuracy (exact matches only) and Lenient Accuracy (partial credit for correct categories or closely related diagnoses). By combining transcript data with LLM-generated predictions, the project investigates how close LLMs can come to making accurate medical diagnoses in a realistic, case-based setting.
 
+Some incorrect predictions were plausible differential diagnoses, meaning the LLM identified a condition with overlapping symptoms but not the exact disease. These errors often arose from missing contextual clues in the transcripts and the model’s reliance on text patterns rather than full clinical reasoning.
+
+
 ### Dataset
 
 * Source: House M.D.
@@ -41,14 +44,23 @@ Using both metrics gives a fuller understanding of LLM performance:
 
 This evaluation approach follows the recommendations in Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024), which highlights that category-level scoring and semantic similarity checks can better reflect real-world medical utility.
 
+### Training
+* Install required packages within notebook
+* Use the provided pipelines to create, prepare, and train or fine-tune the dataset
 
+### How to Reproduce Results
+* Clone the repository
+* Install Libraries
+* Ensure dataset is prepared
+* Run the evaluation script
 
 ### Conclusions
 
 * The 12.5% gap between the two metrics shows that while exact matches are limited, the LLM frequently predicted the correct diagnostic domain, which still has clinical relevance.
+* Many incorrect predictions were still clinically plausible, aligning with literature showing LLMs excel at narrowing differentials but struggle with final confirmation.
+* Improving performance may require integrating structured clinical data and using Top-k accuracy evaluation for a fuller assessment.
 
 ### Future Work
-
 * Evaluate more cases to improve statistical robustness.
 * Incorporate Top-k accuracy to credit correct answers within the model’s top few guesses.
 * Use retrieval-augmented generation (RAG) to improve grounding and reduce hallucinations.
