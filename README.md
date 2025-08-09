@@ -58,7 +58,8 @@ This evaluation approach follows the recommendations in Evaluation and mitigatio
 
 * The 12.5% gap between the two metrics shows that while exact matches are limited, the LLM frequently predicted the correct diagnostic domain, which still has clinical relevance.
 * Many incorrect predictions were still clinically plausible, aligning with literature showing LLMs excel at narrowing differentials but struggle with final confirmation.
-* Improving performance may require integrating structured clinical data and using Top-k accuracy evaluation for a fuller assessment.
+
+The general consensus in most studies show that LLMs perform notably worse than trained clinicians in accurately diagnosing patients, often struggling with rare conditions, ambiguous presentations, and integrating complex clinical data. While they may generate plausible differential diagnoses, their accuracy rates are frequently well below physician performance, highlighting significant limitations for real-world clinical use.
 
 ### Future Work
 * Evaluate more cases to improve statistical robustness.
