@@ -56,6 +56,6 @@ This evaluation approach follows the recommendations in Evaluation and mitigatio
 
 ## Citations
 
-* Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024)
-* Liu et al. (2023) — Automated disease diagnosis evaluation metrics in AI-based systems
-* Tu et al. (2024) — Top-k accuracy for differential diagnosis tasks
+* [Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024)](https://www.nature.com/articles/s44387-025-00011-z) 
+* [Liu et al. (2023) — Automated disease diagnosis evaluation metrics in AI-based systems](https://www.nature.com/articles/s41591-024-03097-1) 
+* https://arxiv.org/html/2409.00097v3
