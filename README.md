@@ -13,90 +13,49 @@ This project evaluates the diagnostic accuracy of a LLM in predicting the correc
  
 
 
-#### Preprocessing / Clean up
+#### Evaluation Metrics
 
-* Describe any manipulations you performed to the data.
+1. Strict Accuracy:
+  * Definition: The percentage of predictions that exactly match the correct final diagnosis.
+  * Formula: Strict Accuracy = Correct Match / Amount of cases x 100 
+  * Results: 2/8 cases correct 25%
+  * Visulization: Each of the 1's represent a correct diagnosis while the 0's represent false diagnosis
 
-#### Data Visualization
+<img width="709" height="639" alt="download" src="https://github.com/user-attachments/assets/b28f5c5e-0b59-4958-ad8f-9dab2efb42b6" />
 
-Show a few visualization of the data and say a few words about what you see.
+2. Lenient Accuracy:
+  * Definition: Gives partial credit if:
+    * The predicted diagnosis is in the correct category (e.g., “Cancer” vs. “Lymphoma”)
+    * OR the semantic similarity between predicted and true diagnosis ≥ 0.75
+  * Formula: Strict Accuracy = Partially Correct Match / Amount of cases x 100 
+  * Results: 3/8 cases correct 37.5%
+  * Visulization:
 
-### Problem Formulation
+<img width="489" height="290" alt="download-1" src="https://github.com/user-attachments/assets/57aee203-7370-40f5-b564-b763710206bd" />
 
-* Define:
-  * Input / Output
-  * Models
-    * Describe the different models you tried and why.
-  * Loss, Optimizer, other Hyperparameters.
 
-### Training
+### Strict V. Lenient Accuracy and Why Both Matter
+Using both metrics gives a fuller understanding of LLM performance:
+* Strict Accuracy: Measures diagnostic precision.
+* Lenient Accuracy: Measures clinical usefulness when the LLM is “close enough” to still guide treatment.
 
-* Describe the training:
-  * How you trained: software and hardware.
-  * How did training take.
-  * Training curves (loss vs epoch for test/train).
-  * How did you decide to stop training.
-  * Any difficulties? How did you resolve them?
+This evaluation approach follows the recommendations in Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024), which highlights that category-level scoring and semantic similarity checks can better reflect real-world medical utility.
 
-### Performance Comparison
 
-* Clearly define the key performance metric(s).
-* Show/compare results in one table.
-* Show one (or few) visualization(s) of results, for example ROC curves.
 
 ### Conclusions
 
-* State any conclusions you can infer from your work. Example: LSTM work better than GRU.
+* The 12.5% gap between the two metrics shows that while exact matches are limited, the LLM frequently predicted the correct diagnostic domain, which still has clinical relevance.
 
 ### Future Work
 
-* What would be the next thing that you would try.
-* What are some other studies that can be done starting from here.
-
-## How to reproduce results
-
-* In this section, provide instructions at least one of the following:
-   * Reproduce your results fully, including training.
-   * Apply this package to other data. For example, how to use the model you trained.
-   * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
-
-### Overview of files in repository
-
-* Describe the directory structure, if any.
-* List all relavent files and describe their role in the package.
-* An example:
-  * utils.py: various functions that are used in cleaning and visualizing data.
-  * preprocess.ipynb: Takes input data in CSV and writes out data frame after cleanup.
-  * visualization.ipynb: Creates various visualizations of the data.
-  * models.py: Contains functions that build the various models.
-  * training-model-1.ipynb: Trains the first model and saves model during training.
-  * training-model-2.ipynb: Trains the second model and saves model during training.
-  * training-model-3.ipynb: Trains the third model and saves model during training.
-  * performance.ipynb: loads multiple trained models and compares results.
-  * inference.ipynb: loads a trained model and applies it to test data to create kaggle submission.
-
-* Note that all of these notebooks should contain enough text for someone to understand what is happening.
-
-### Software Setup
-* List all of the required packages.
-* If not standard, provide or point to instruction for installing the packages.
-* Describe how to install your package.
-
-### Data
-
-* Point to where they can download the data.
-* Lead them through preprocessing steps, if necessary.
-
-### Training
-
-* Describe how to train the model
-
-#### Performance Evaluation
-
-* Describe how to run the performance evaluation.
+* Evaluate more cases to improve statistical robustness.
+* Incorporate Top-k accuracy to credit correct answers within the model’s top few guesses.
+* Use retrieval-augmented generation (RAG) to improve grounding and reduce hallucinations.
 
 
 ## Citations
 
-* Provide any references.
+* Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024)
+* Liu et al. (2023) — Automated disease diagnosis evaluation metrics in AI-based systems
+* Tu et al. (2024) — Top-k accuracy for differential diagnosis tasks
