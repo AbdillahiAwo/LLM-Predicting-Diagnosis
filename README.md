@@ -42,7 +42,7 @@ Using both metrics gives a fuller understanding of LLM performance:
 * Strict Accuracy: Measures diagnostic precision.
 * Lenient Accuracy: Measures clinical usefulness when the LLM is “close enough” to still guide treatment.
 
-This evaluation approach follows the recommendations in Evaluation and mitigation of the limitations of large language models in clinical decision-making (2024), which highlights that category-level scoring and semantic similarity checks can better reflect real-world medical utility.
+This evaluation approach follows the recommendations in Evaluation and mitigation of the limitations of large language models in clinical decision-making, which highlights that category-level scoring and semantic similarity checks can better reflect real-world medical utility.
 
 ### Training
 * Install required packages within notebook
